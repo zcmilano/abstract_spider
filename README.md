@@ -12,4 +12,4 @@
 用scrapy写，起始url列表需手动设置。爬取过程偶尔出现404，设置DOWNLOAD_DELAY = 2也没有改善，反爬虫措施有待加强
 
 ### Nature_spider
-基于requests+bs，目前是爬取某一期的所有文章
+基于requests+bs，目前是爬取某一期的所有文章的摘要
