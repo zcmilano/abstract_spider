@@ -120,6 +120,7 @@ def find_abstract(pages_soup):
     except:
         return ''
 
+
 def translate(query):
     appid = '1841de84b696ae86'
     secret_key = 'CWTn9rXAKaELYN0dYdks0vb3IEbGQuYM'
@@ -138,6 +139,7 @@ def translate(query):
         return json_data['translation']
     except Exception as e:
         return str(e)
+
 
 def download_proceedings(url):
     html = getHTMLText(url, code='utf-8')
@@ -208,47 +210,47 @@ def download_proceedings(url):
 if __name__ == '__main__':
     url_list = ['https://dl.acm.org/citation.cfm?id=3025453&preflayout=flat',
                 'https://dl.acm.org/citation.cfm?id=2858036&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=2702123&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=2556288&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=2470654&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=2207676&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1978942&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1753326&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1518701&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1357054&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1240624&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1124772&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1054972&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=985692&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=642611&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=507752&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=503376&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=365024&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=332040&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=302979&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=286498&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=274644&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=258549&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=257089&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=238386&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=223355&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=223904&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=259963&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=191666&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=169059&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=259964&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=142750&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=1125021&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=108844&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=97243&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=67449&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=57167&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=29933&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=22627&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=317456&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=800045&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=800049&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=800276&preflayout=flat',
-                 'https://dl.acm.org/citation.cfm?id=800275&preflayout=flat']
+                'https://dl.acm.org/citation.cfm?id=2702123&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=2556288&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=2470654&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=2207676&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1978942&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1753326&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1518701&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1357054&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1240624&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1124772&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1054972&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=985692&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=642611&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=507752&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=503376&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=365024&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=332040&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=302979&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=286498&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=274644&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=258549&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=257089&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=238386&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=223355&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=223904&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=259963&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=191666&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=169059&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=259964&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=142750&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=1125021&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=108844&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=97243&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=67449&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=57167&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=29933&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=22627&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=317456&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=800045&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=800049&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=800276&preflayout=flat',
+                'https://dl.acm.org/citation.cfm?id=800275&preflayout=flat']
     for url in url_list:
         download_proceedings(url)
