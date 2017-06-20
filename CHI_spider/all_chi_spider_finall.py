@@ -1,7 +1,12 @@
-import requests
 from bs4 import BeautifulSoup
 import re
 import string
+import requests
+import hashlib
+import json
+import urllib
+import random
+
 
 def getHTMLText(url, code='utf-8'):
     try:
@@ -49,12 +54,14 @@ def how_much_articles(soup):
 
     return i
 
+
 def is_session(soup):
     try:
         if soup.find('td', colspan='2'):
             return True
     except:
         return False
+
 
 def is_title(soup):
     try:
@@ -113,6 +120,24 @@ def find_abstract(pages_soup):
     except:
         return ''
 
+def translate(query):
+    appid = '1841de84b696ae86'
+    secret_key = 'CWTn9rXAKaELYN0dYdks0vb3IEbGQuYM'
+    from_lang = 'en'
+    to_lang = 'zh_CHS'
+    salt = random.randint(32768, 65536)
+    sign = appid + query + str(salt) + secret_key
+    m1 = hashlib.md5()
+    m1.update(sign.encode())
+    sign = m1.hexdigest()
+    my_url = "https://openapi.youdao.com/api?"+'&q='+urllib.parse.quote(query)+'&salt='+str(salt)+'&sign='+sign+'&from='+str(from_lang)+'&appKey='+str(appid) + '&to=' + str(to_lang)
+    try:
+        r = requests.get(my_url)
+        response = r.content
+        json_data = json.loads(response)
+        return json_data['translation']
+    except Exception as e:
+        return str(e)
 
 def download_proceedings(url):
     html = getHTMLText(url, code='utf-8')
@@ -170,12 +195,13 @@ def download_proceedings(url):
             articles.append(article_info)
             print('article{} finish'.format(str(i+1)))
 
-    with open("{}.txt".format(file_name), "w") as f:
-        f.write(str(len(articles)) + '\n')
-        for article in articles:
-            f.write(str(article) + '\n')
-
-
+    with open("{}.md".format(file_name), "w") as f:
+        for i in range(len(articles)):
+            f.write('### {}. '.format(str(i+1))+articles[i]['title']+'\n')
+            f.write('*'+articles[i]['session']+'* \n\n')
+            f.write(articles[i]['abstract']+'\n \n')
+            f.write('>'+translate(articles[i]['abstract'])[0]+ '\n')
+            f.write('>[article link](' + articles[i]['link']+')\n \n')
 
 
 
