@@ -5,22 +5,24 @@ import urllib
 import random
 
 
-def translate(query):
-    appid = '1841de84b696ae86'
-    secret_key = 'CWTn9rXAKaELYN0dYdks0vb3IEbGQuYM'
-    from_lang = 'en'
-    to_lang = 'zh_CHS'
+def translate(q):
+    appid = '20170618000059135'
+    secretKey = 'utIzHnjpeWSntf8CvnlM'
+    my_url = 'http://api.fanyi.baidu.com/api/trans/vip/translate'
+    fromLang = 'en'
+    toLang = 'zh'
     salt = random.randint(32768, 65536)
-    sign = appid + query + str(salt) + secret_key
+    sign = appid + q + str(salt) + secretKey
     m1 = hashlib.md5()
     m1.update(sign.encode())
     sign = m1.hexdigest()
-    my_url = "https://openapi.youdao.com/api?"+'&q='+urllib.parse.quote(query)+'&salt='+str(salt)+'&sign='+sign+'&from='+str(from_lang)+'&appKey='+str(appid) + '&to=' + str(to_lang)
+    my_url = my_url + '?appid=' + appid + '&q=' + urllib.parse.quote(
+        q) + '&from=' + fromLang + '&to=' + toLang + '&salt=' + str(salt) + '&sign=' + sign
     try:
         r = requests.get(my_url)
         response = r.content
         json_data = json.loads(response)
-        return json_data['translation']
+        return json_data['trans_result'][0]['dst']
     except Exception as e:
         return str(e)
 
